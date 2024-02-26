@@ -1,12 +1,12 @@
-const express = require("express");
-const webpack = require("webpack");
-const webpackDevMiddleware = require("webpack-dev-middleware");
-const webpackHotMiddleware = require("webpack-hot-middleware");
+const express = require('express');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const PORT = 3000;
 
 const app = express();
-const config = require("./webpack/webpack.dev.js");
+const config = require('./webpack/webpack.dev.js');
 const compiler = webpack(config);
 
 app.use(
@@ -17,7 +17,7 @@ app.use(
 
 app.use(
   webpackHotMiddleware(compiler, {
-    path: "/__what",
+    path: '/__what',
     heartbeat: 10 * 1000,
   })
 );

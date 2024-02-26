@@ -1,0 +1,22 @@
+.task-example {
+  margin: 30px;
+
+  .input-form {
+    display: flex;
+    width: 30%;
+    column-gap: 10px;
+
+    .input-text {
+      display: flex;
+      flex-direction: column;
+
+      #input {
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .btn {
+    align-self: flex-end;
+  }
+}
