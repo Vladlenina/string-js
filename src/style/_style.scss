@@ -1,22 +1,41 @@
-.task-example {
+body {
+  background-color: rgb(175, 239, 239);
+  color: rgb(127, 23, 151);
+}
+.task {
   margin: 30px;
 
   .input-form {
     display: flex;
     width: 30%;
     column-gap: 10px;
+    font-size: larger;
 
     .input-text {
       display: flex;
       flex-direction: column;
-
-      #input {
+      row-gap: 10px;
+      input {
         margin-top: 5px;
+        cursor: pointer;
+        outline: none;
+        width: 200px;
+        height: 26px;
+        border-radius: 30px;
+        border: 2px solid rgb(50, 13, 48);
+        background-color: rgb(124, 175, 227);
       }
     }
   }
 
   .btn {
     align-self: flex-end;
+    cursor: pointer;
+    outline: none;
+    width: 150px;
+    height: 30px;
+    border-radius: 30px;
+    border: 2px solid rgb(50, 13, 48);
+    background-color: rgb(124, 175, 227);
   }
 }
