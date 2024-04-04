@@ -1,6 +1,6 @@
 body {
-  background-color: rgb(175, 239, 239);
-  color: rgb(127, 23, 151);
+  background-color: #eeeeee;
+  color: #222831;
 }
 .task {
   margin: 30px;
@@ -17,13 +17,19 @@ body {
       row-gap: 10px;
       input {
         margin-top: 5px;
+        padding-left: 10px;
         cursor: pointer;
         outline: none;
         width: 200px;
         height: 26px;
         border-radius: 30px;
-        border: 2px solid rgb(50, 13, 48);
-        background-color: rgb(124, 175, 227);
+        border: 1px solid #31363f;
+        background-color: #76abae;
+      }
+
+      input:focus {
+        border: 1px solid rgba(50, 13, 48, 0);
+        outline: 2px solid #31363f;
       }
     }
   }
@@ -35,7 +41,15 @@ body {
     width: 150px;
     height: 30px;
     border-radius: 30px;
-    border: 2px solid rgb(50, 13, 48);
-    background-color: rgb(124, 175, 227);
+    border: none;
+    background-color: #76abae;
+  }
+
+  .btn:hover {
+    background-color: #93aeaf;
+  }
+
+  .btn:active {
+    background-color: rgba(127, 140, 153, 0.8);
   }
 }

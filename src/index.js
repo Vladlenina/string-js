@@ -35,25 +35,36 @@ btn1.addEventListener('click', () => {
   const text = input1.value;
 
   if (text) {
-    const arrayChars = text.split('');
-    const newArray = [];
+    // const arrayChars = text.split('');
+    // const newArray = [];
 
-    for (let i = 0; i < arrayChars.length; i++) {
-      if (!isNaN(parseInt(arrayChars[i]))) {
-        newArray.push(arrayChars[i]);
-      }
-    }
+    // arrayChars.forEach((char) => {
+    //   if (!isNaN(parseInt(char))) {
+    //     newArray.push(char);
+    //   }
+    // });
+    const arrayChars = text.replace(/\D/g, '');
     let normalChars;
-    if (newArray[0] === '8') {
-      normalChars = ['+7', ...newArray.slice(1)];
+    if (arrayChars[0] === '8') {
+      normalChars = ['+7', ...arrayChars.slice(1)];
     } else {
-      normalChars = ['+', ...newArray];
+      normalChars = ['+', ...arrayChars];
     }
-
     const newStr = normalChars.join('');
     result1.textContent = newStr;
     input1.value = '';
   }
+
+  //   let normalChars;
+  //   if (newArray[0] === '8') {
+  //     normalChars = ['+7', ...newArray.slice(1)];
+  //   } else {
+  //     normalChars = ['+', ...newArray];
+  //   }
+  //   const newStr = normalChars.join('');
+  //   result1.textContent = newStr;
+  //   input1.value = '';
+  // }
 });
 
 // Задача 12.2
@@ -66,26 +77,29 @@ btn2.addEventListener('click', () => {
   const text = input2.value;
 
   if (text) {
-    const words = text.split('');
-    const numbersArray = [];
+    // const words = text.split('');
+    // const numbersArray = [];
 
-    let str = '';
+    // let str = '';
 
-    for (let i = 0; i < words.length; i++) {
-      const char = words[i];
-      if (!isNaN(parseInt(char))) {
-        str += char;
-        if (i == words.length - 1) {
-          numbersArray.push(str);
-          str = '';
-        }
-      } else if (str) {
-        numbersArray.push(str);
-        str = '';
-      }
-    }
-    const newNumbersArray = numbersArray.map((elem) => parseInt(elem));
-    result2.textContent = newNumbersArray;
+    // for (let i = 0; i < words.length; i++) {
+    //   const char = words[i];
+    //   if (!isNaN(parseInt(char))) {
+    //     str += char;
+    //     if (i == words.length - 1) {
+    //       numbersArray.push(str);
+    //       str = '';
+    //     }
+    //   } else if (str) {
+    //     numbersArray.push(str);
+    //     str = '';
+    //   }
+    // }
+    const numbersArray = text.match(/\d+/g);
+    console.log(numbersArray);
+    // const newNumbersArray = numbersArray.map((elem) => parseInt(elem));
+    // result2.textContent = newNumbersArray;
+    result2.textContent = numbersArray;
     input2.value = '';
   }
 });
@@ -112,23 +126,44 @@ btn3.addEventListener('click', () => {
   const text = input3.value;
 
   if (text) {
-    const arrayText = text.split('');
+    // const arrayText = text.split('');
 
-    let toLowerCaseCount = 0;
-    let toUpperCaseCount = 0;
+    // let toLowerCaseCount = 0;
+    // let toUpperCaseCount = 0;
 
-    for (let i = 0; i < arrayText.length; i++) {
-      const char = arrayText[i];
-      if (char !== ' ' && char === char.toLowerCase()) {
-        toLowerCaseCount++;
-      } else if (char !== ' ' && char === char.toUpperCase()) {
-        toUpperCaseCount++;
-      }
-    }
+    // arrayText.forEach((char) => {
+    //   if (char === ' ') return;
+
+    //   if (char === char.toLowerCase()) {
+    //     toLowerCaseCount++;
+    //   } else {
+    //     toUpperCaseCount++;
+    //   }
+    // });
+    const toLowerCaseCount = text.match(/[a-z]/g).length;
+    const toUpperCaseCount = text.match(/[A-Z]/g).length;
     result3.textContent = `Прописных: ${toUpperCaseCount}, строчных: ${toLowerCaseCount}`;
     input3.value = '';
   }
 });
+
+// const text = "One Two Three";
+
+// if (text) {
+//   const arrayText = text.split('');
+
+//   let toLowerCaseCount = 0;
+//   let toUpperCaseCount = 0;
+
+//    for (let char of arrayText) {
+//     if (char === ' ') continue;
+
+//     if (char === char.toLowerCase()) {
+//       toLowerCaseCount++;
+//     } else if (char === char.toUpperCase()) {
+//       toUpperCaseCount++;
+//     }
+//   }
 
 // Задача 12.4
 const task4 = document.querySelector('.task-4');
@@ -143,11 +178,11 @@ btn4.addEventListener('click', () => {
     const arrayChars = text.split(' ');
     let longestWord = '';
 
-    for (let i = 0; i < arrayChars.length; i++) {
-      if (arrayChars[i].length > longestWord.length) {
-        longestWord = arrayChars[i];
+    arrayChars.forEach((char) => {
+      if (char.length > longestWord.length) {
+        longestWord = char;
       }
-    }
+    });
     result4.textContent = `Слово: "${longestWord}", длина: ${longestWord.length}`;
     input4.value = '';
   }
@@ -164,14 +199,50 @@ btn5.addEventListener('click', () => {
   let textResult = '';
   if (text) {
     const arrayChars = text.split('');
-    const reversedChars = arrayChars.reverse().join('');
+    const reversedChars = arrayChars.toReversed().join('');
 
-    if (text === reversedChars) {
-      textResult = 'true';
-    } else {
-      textResult = 'false';
-    }
+    textResult = text === reversedChars;
     result5.textContent = textResult;
     input5.value = '';
+  }
+});
+
+// Задача 12.6
+
+const task6 = document.querySelector('.task-6');
+const input6 = task6.querySelector('#input-6');
+const btn6 = task6.querySelector('.btn');
+const result6 = task6.querySelector('.result');
+
+btn6.addEventListener('click', () => {
+  const text = input6.value;
+  if (text) {
+    // const words = text.split(' ');
+    // const filteredArray = words.filter((word) => word !== '');
+    // const string = filteredArray.join(' ');
+
+    const string = text.replace(/\s/g, ' ');
+
+    result6.textContent = `"${string}"`;
+    input6.value = '';
+  }
+});
+
+// Задача 12.7
+const task7 = document.querySelector('.task-7');
+const input7 = task7.querySelector('#input-7');
+const btn7 = task7.querySelector('.btn');
+const result7 = task7.querySelector('.result');
+
+btn7.addEventListener('click', () => {
+  const text = input7.value;
+  if (text) {
+    const words = text.split(' ');
+    const changedWords = words.map((word) => {
+      return word[0].toUpperCase() + word.slice(1);
+    });
+    const string = changedWords.join(' ');
+    result7.textContent = `"${string}"`;
+    input7.value = '';
   }
 });
